@@ -5,10 +5,10 @@
 
 import Foundation
 
-extension Thread {
+public extension Thread {
     /// Ensures a block is performed on the main thread, dispatching synchronously if needed
     /// - Parameter work: The work to be performed.
-    public static func onMain(_ work: () -> Void) {
+    static func onMain(_ work: () -> Void) {
         if isMainThread {
             work()
         } else {
@@ -22,7 +22,7 @@ extension Thread {
     /// - Parameter work: The work to be performed
     ///
     /// - Returns: Whatever you like.
-    public static func onMain<T>(_ work: () -> T) -> T {
+    static func onMain<T>(_ work: () -> T) -> T {
         if isMainThread {
             return work()
         } else {
